@@ -1,0 +1,179 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-blue: #8ECAE6;
+  --secondary-mint: #A8DADC;
+  --accent-blue: #A0C4FF;
+  --background: #F8F9FA;
+  --text-primary: #212529;
+  --destructive: #E57373;
+  --success: #81C784;
+  --border: #E9ECEF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  background: var(--background);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  @apply px-4 py-3 rounded-lg font-medium transition-all duration-200 
+         focus:outline-none focus:ring-2 focus:ring-offset-2 
+         active:scale-95 touch-manipulation;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: white;
+  box-shadow: 0 2px 8px rgba(142, 202, 230, 0.3);
+}
+
+.btn-primary:hover {
+  background: #7BB3D9;
+  box-shadow: 0 4px 12px rgba(142, 202, 230, 0.4);
+}
+
+.btn-secondary {
+  background: var(--secondary-mint);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(168, 218, 220, 0.3);
+}
+
+.btn-secondary:hover {
+  background: #9BCBCD;
+  box-shadow: 0 4px 12px rgba(168, 218, 220, 0.4);
+}
+
+.btn-destructive {
+  background: var(--destructive);
+  color: white;
+  box-shadow: 0 2px 8px rgba(229, 115, 115, 0.3);
+}
+
+.btn-destructive:hover {
+  background: #D85A5A;
+  box-shadow: 0 4px 12px rgba(229, 115, 115, 0.4);
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg border border-slate-200/50 
+         backdrop-blur-sm transition-all duration-300;
+}
+
+.card:hover {
+  @apply shadow-xl transform translate-y-[-2px];
+}
+
+.activity-card {
+  @apply bg-white rounded-xl p-4 shadow-md border border-slate-200/50 
+         transition-all duration-300 hover:shadow-lg hover:transform hover:translate-y-[-1px];
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.2s ease-in-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilos para impresión PDF */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  body {
+    background: white !important;
+    font-size: 12pt !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  .card, .activity-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    break-inside: avoid;
+    margin-bottom: 10pt;
+  }
+  
+  h1 {
+    font-size: 18pt !important;
+    margin-bottom: 10pt !important;
+  }
+  
+  h2 {
+    font-size: 14pt !important;
+    margin-bottom: 8pt !important;
+  }
+  
+  .btn {
+    display: none !important;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
